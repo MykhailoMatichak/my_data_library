@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: my_data_library
+  main:
+    web-application-type: NONE
+
