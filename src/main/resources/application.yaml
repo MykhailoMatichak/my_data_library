@@ -3,5 +3,16 @@ spring:
     name: my_data_library
   main:
     web-application-type: NONE
+  datasource:
+    url: jdbc:sqlite:./data/app.db
+    driver-class-name: org.sqlite.JDBC
+  sql:
+    init:
+      mode: ALWAYS
+  jpa:
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    hibernate:
+        ddl-auto: update
+    
 
  
