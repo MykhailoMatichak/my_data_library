@@ -15,6 +15,8 @@ public abstract class BaseEntity {
      private UUID id;
      private LocalDateTime createdDate;
      private String name;
+     private int year;
+     private String comment;
 
 
 }
