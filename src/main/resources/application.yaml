@@ -5,13 +5,10 @@ spring:
     web-application-type: NONE
     banner-mode: OFF
   datasource:
-    url: jdbc:h2:file:./data/demo
+    url: jdbc:h2:file:./data/demo;AUTO_SERVER=TRUE
     username: a
     password: a
     driverClassName: org.h2.Driver
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-
 
     # flyway migration
   flyway:
@@ -22,6 +19,8 @@ spring:
     validate-on-migrate: true
     baseline-on-migrate: true
 
-
+logging:
+  level:
+    root: off
 
  
