@@ -27,7 +27,7 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-flyway'
 	runtimeOnly 'com.h2database:h2'
-	implementation("com.github.freva:ascii-table:1.13.0")
+	implementation("com.github.freva:ascii-table:1.8.0")
 }
 
 tasks.named('test') {
