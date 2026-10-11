@@ -4,7 +4,6 @@ import com.github.freva.asciitable.AsciiTable;
 import com.github.freva.asciitable.Column;
 import com.pet_project.my_data_library.persistence.entity.Book;
 import com.pet_project.my_data_library.service.BookService;
-import com.pet_project.my_data_library.validation.BookValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -20,8 +19,6 @@ public class ConsoleMenu implements CommandLineRunner {
 
     @Autowired
     private BookService bookService;
-    @Autowired
-    private BookValidator bookValidator;
 
     @Override
     public void run(String[] args) {
@@ -32,7 +29,7 @@ public class ConsoleMenu implements CommandLineRunner {
 
             switch (choice) {
                 case 1 -> booksMenu();
-                case 2 -> System.out.println("TODO: фільми");
+                case 2 -> System.out.println("TODO:  фільми");
                 case 3 -> System.out.println("TODO: манга");
                 case 0 -> running = false;
                 default -> System.out.println("Невірний вибір, спробуй ще раз.\n");
@@ -71,34 +68,6 @@ public class ConsoleMenu implements CommandLineRunner {
         }
     }
 
-    public void addBook() {
-        System.out.print("Задайте назву книги: ");
-        String name = readString();
-
-        System.out.print("Задайте автора: ");
-        String author = readString();
-
-        System.out.print("Задайте рік випуску: ");
-        int releaseYear = readInt();
-
-        System.out.print("Задайте кількість сторінок: ");
-        int pages = readInt();
-
-        System.out.print("Задайте коментар про книгу: ");
-        String comment = scanner.nextLine();
-
-        //write to object book
-        Book book = new Book();
-        book.setName(name);
-        book.setAuthor(author);
-        book.setReleaseYear(releaseYear);
-        book.setPages(pages);
-        book.setComment(comment);
-
-
-        bookService.addBook(book);
-    }
-
     public void printBooksTable() {
         List<Book> books = bookService.getAllBooks();
         System.out.println(AsciiTable.getTable(
@@ -116,14 +85,52 @@ public class ConsoleMenu implements CommandLineRunner {
                 )
         ));
     }
+
+    public void addBook() {
+        System.out.print("Задайте назву книги: ");
+        String name = readString();
+
+        System.out.print("Задайте автора: ");
+        String author = readString();
+
+        System.out.print("Задайте рік випуску: ");
+        int releaseYear = readInt();
+
+        System.out.print("Задайте кількість сторінок: ");
+        int pages = readInt();
+
+        System.out.print("Бажаєте додати коментар?(y/n): ");
+        String answer = readString();
+        String comment = null;
+        if(answer.equalsIgnoreCase("y")){
+            System.out.print("Задайте коментар про книгу: ");
+            comment = readString();
+        }
+
+        //write to object book
+        Book book = new Book();
+        book.setName(name);
+        book.setAuthor(author);
+        book.setReleaseYear(releaseYear);
+        book.setPages(pages);
+        book.setComment(comment);
+
+        bookService.addBook(book);
+    }
+
     //methods for reading
     private int readInt() {
-        return Integer.parseInt(scanner.nextLine());
+        while(true) {
+            if(scanner.hasNextInt()) {
+                return Integer.parseInt(scanner.nextLine());
+            } else  {
+                System.out.println("Це не число. Спробуй ще.");
+                scanner.nextLine();
+            }
+        }
     }
     private String readString() {
         return scanner.nextLine();
     }
-
-
 
 }
