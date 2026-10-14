@@ -61,7 +61,7 @@ public class ConsoleMenu implements CommandLineRunner {
             switch (choice) {
                 case 1 -> printBooksTable();
                 case 2 -> addBook();
-                case 3 -> { /* TODO: сам напиши */ }
+                case 3 -> deleteBook();
                 case 0 -> inSubMenu = false;
                 default -> System.out.println("Невірний вибір.\n");
             }
@@ -74,7 +74,7 @@ public class ConsoleMenu implements CommandLineRunner {
                 AsciiTable.FANCY_ASCII,
                 books,
                 Arrays.asList(
-                        new Column().header("Id").with(book -> String.valueOf(book.getId()).substring(0, 8)),
+                        new Column().header("№").with(book -> String.valueOf(books.indexOf(book) + 1)),
                         new Column().header("Name").with(book -> book.getName()),
                         new Column().header("Author").with(book -> book.getAuthor()),
                         new Column().header("Release year").with(book -> String.valueOf(book.getReleaseYear())),
@@ -116,6 +116,11 @@ public class ConsoleMenu implements CommandLineRunner {
         book.setComment(comment);
 
         bookService.addBook(book);
+    }
+
+    public void deleteBook() {
+        List<Book> books = bookService.getAllBooks();
+
     }
 
     //methods for reading
