@@ -1,6 +1,5 @@
 package com.pet_project.my_data_library.console;
 
-import com.pet_project.my_data_library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -11,7 +10,6 @@ import java.util.Scanner;
 
 @Component
 public class ConsoleMenu implements CommandLineRunner {
-    Scanner scanner = new Scanner(System.in);
 
     @Autowired
     private BooksMenu booksMenu;
@@ -29,7 +27,7 @@ public class ConsoleMenu implements CommandLineRunner {
 
             switch (choice) {
                 case 1 -> booksMenu.menu();
-                case 2 -> System.out.println("TODO:  фільми");
+                case 2 -> filmsMenu.menu();
                 case 3 -> System.out.println("TODO: манга");
                 case 0 -> running = false;
                 default -> System.out.println("Невірний вибір, спробуй ще раз.\n");

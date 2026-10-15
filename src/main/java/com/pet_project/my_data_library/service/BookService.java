@@ -3,7 +3,6 @@ package com.pet_project.my_data_library.service;
 
 import com.pet_project.my_data_library.persistence.entity.Book;
 import com.pet_project.my_data_library.persistence.repository.BookRepository;
-import jakarta.validation.Valid;
 import lombok.EqualsAndHashCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +23,7 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public Book addBook(@Valid Book book) {
+    public Book addBook(Book book) {
         return bookRepository.save(book);
     }
 

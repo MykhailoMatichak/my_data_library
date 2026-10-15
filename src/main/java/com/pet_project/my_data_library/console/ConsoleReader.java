@@ -1,7 +1,10 @@
 package com.pet_project.my_data_library.console;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 
+@Component
 public class ConsoleReader {
     Scanner scanner = new Scanner(System.in);
     //methods for reading

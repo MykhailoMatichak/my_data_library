@@ -5,10 +5,12 @@ import com.github.freva.asciitable.Column;
 import com.pet_project.my_data_library.persistence.entity.Book;
 import com.pet_project.my_data_library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class BooksMenu {
 
     @Autowired
