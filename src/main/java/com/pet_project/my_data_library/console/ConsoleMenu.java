@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.UUID;
 
 
 @Component
@@ -118,9 +119,17 @@ public class ConsoleMenu implements CommandLineRunner {
         bookService.addBook(book);
     }
 
-    public void deleteBook() {
+    private void deleteBook() {
         List<Book> books = bookService.getAllBooks();
-
+        System.out.print("Введіть №: ");
+        int num =  readInt();
+        if(num < 1 || num > books.size()) {
+            System.out.println("Невірний номер. Всього книг: " + books.size());
+            return;
+        }
+        Book book = books.get(num -1);
+        bookService.deleteBook(book.getId());
+        System.out.println("Книгу успішно видалено.");
     }
 
     //methods for reading

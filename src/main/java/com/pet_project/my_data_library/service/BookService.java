@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
+import java.util.UUID;
 
 @EqualsAndHashCode
 @Service
@@ -27,6 +28,9 @@ public class BookService {
         return bookRepository.save(book);
     }
 
+    public void deleteBook(UUID id) {
+        bookRepository.deleteById(id);
+    }
 }
 
 

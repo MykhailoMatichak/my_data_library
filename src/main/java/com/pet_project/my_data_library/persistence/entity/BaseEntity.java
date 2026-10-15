@@ -21,7 +21,6 @@ public abstract class BaseEntity {
      @GeneratedValue(strategy = GenerationType.UUID)
      private UUID id;
      @CreationTimestamp
-
      private LocalDateTime createdDate;
      private String name;
      private int releaseYear;
