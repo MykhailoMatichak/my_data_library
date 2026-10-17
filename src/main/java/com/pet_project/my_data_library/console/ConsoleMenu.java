@@ -16,6 +16,8 @@ public class ConsoleMenu implements CommandLineRunner {
     @Autowired
     private FilmsMenu filmsMenu;
     @Autowired
+    private MangaMenu mangaMenu;
+    @Autowired
     private ConsoleReader consoleReader;
 
     @Override
@@ -28,7 +30,7 @@ public class ConsoleMenu implements CommandLineRunner {
             switch (choice) {
                 case 1 -> booksMenu.menu();
                 case 2 -> filmsMenu.menu();
-                case 3 -> System.out.println("TODO: манга");
+                case 3 -> mangaMenu.menu();
                 case 0 -> running = false;
                 default -> System.out.println("Невірний вибір, спробуй ще раз.\n");
             }

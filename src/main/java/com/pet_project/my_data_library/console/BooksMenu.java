@@ -99,7 +99,7 @@ public class BooksMenu {
             return;
         }
         Book book = books.get(num -1);
-        bookService.deleteBook(book.getId());
         System.out.println("Книгу успішно видалено.");
+        bookService.deleteBook(book.getId());
     }
 }

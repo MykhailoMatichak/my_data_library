@@ -10,11 +10,10 @@ public class ConsoleReader {
     //methods for reading
     public int readInt() {
         while(true) {
-            if(scanner.hasNextInt()) {
-                return Integer.parseInt(scanner.nextLine());
-            } else  {
+            try {
+                return Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e)  {
                 System.out.println("Це не число. Спробуй ще.");
-                scanner.nextLine();
             }
         }
     }
