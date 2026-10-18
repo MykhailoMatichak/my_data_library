@@ -22,8 +22,8 @@ spring:
     validate-on-migrate: true
     baseline-on-migrate: true
 
-#logging:
-#  level:
-#    root: off
+logging:
+  level:
+    root: off
 
  
