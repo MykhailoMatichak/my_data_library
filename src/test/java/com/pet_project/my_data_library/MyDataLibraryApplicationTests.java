@@ -7,8 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 class MyDataLibraryApplicationTests {
 
 	@Test
-	void contextLoads() {
-		System.out.println("Hello World");
-	}
+	void contextLoads() {}
 
 }
